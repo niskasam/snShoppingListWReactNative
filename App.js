@@ -11,14 +11,18 @@ export default function App() {
   const [amount, setAmount] = useState("");
 
   const saveProduct = () => {
-    setShoppingData([
-      ...shoppingData,
-      {
-        id: shoppingData.length + 1,
-        product: product,
-        amount: amount,
-      },
-    ]);
+    if (product && amount) {
+      setShoppingData([
+        ...shoppingData,
+        {
+          id: shoppingData.length + 1,
+          product: product,
+          amount: amount,
+        },
+      ]);
+    } else {
+      Alert.alert("You need to give product and/or amount");
+    }
   };
 
   const deleteProduct = (id) => {
