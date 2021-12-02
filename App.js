@@ -11,7 +11,13 @@ export default function App() {
   const [amount, setAmount] = useState("");
 
   const saveProduct = () => {
-    if (product && amount) {
+    if (!product && !amount) {
+      Alert.alert("You need to give product and amount");
+    } else if (!product) {
+      Alert.alert("You need to give product");
+    } else if (!amount) {
+      Alert.alert("You need to give amount");
+    } else {
       setShoppingData([
         ...shoppingData,
         {
@@ -20,8 +26,6 @@ export default function App() {
           amount: amount,
         },
       ]);
-    } else {
-      Alert.alert("You need to give product and/or amount");
     }
   };
 
